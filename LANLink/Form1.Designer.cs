@@ -28,13 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.lblMyIP = new System.Windows.Forms.Label();
+            this.SuspendLayout();
+            // 
+            // lblMyIP
+            // 
+            this.lblMyIP.AutoSize = true;
+            this.lblMyIP.Location = new System.Drawing.Point(61, 41);
+            this.lblMyIP.Name = "lblMyIP";
+            this.lblMyIP.Size = new System.Drawing.Size(42, 17);
+            this.lblMyIP.TabIndex = 0;
+            this.lblMyIP.Text = "label1";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1053, 583);
+            this.Controls.Add(this.lblMyIP);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label lblMyIP;
     }
 }
 

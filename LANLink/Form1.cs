@@ -16,5 +16,11 @@ namespace LANLink
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            lblMyIP.Text = "My IP: " + NetworkManager.GetLocalIPAddress();
+            
+        }
     }
 }
