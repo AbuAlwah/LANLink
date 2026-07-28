@@ -28,22 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbExit = new System.Windows.Forms.Label();
+            this.lbTitle = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.txtInput = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lblMyIP = new System.Windows.Forms.Label();
-            this.lstPeers = new System.Windows.Forms.ListBox();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.lstChat = new System.Windows.Forms.ListBox();
-            this.txtInput = new System.Windows.Forms.TextBox();
-            this.btnAttachFile = new System.Windows.Forms.Button();
-            this.btnSend = new System.Windows.Forms.Button();
-            this.lbTitle = new System.Windows.Forms.Label();
-            this.lbExit = new System.Windows.Forms.Label();
             this.txtPort = new System.Windows.Forms.Label();
+            this.lblMyIP = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.lblSelectedPeer = new System.Windows.Forms.Label();
+            this.lstChat = new System.Windows.Forms.ListBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -61,21 +60,58 @@
             this.panel1.Size = new System.Drawing.Size(1097, 81);
             this.panel1.TabIndex = 0;
             // 
+            // lbExit
+            // 
+            this.lbExit.AutoSize = true;
+            this.lbExit.BackColor = System.Drawing.Color.Red;
+            this.lbExit.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.lbExit.ForeColor = System.Drawing.Color.White;
+            this.lbExit.Location = new System.Drawing.Point(1043, 30);
+            this.lbExit.Name = "lbExit";
+            this.lbExit.Size = new System.Drawing.Size(22, 24);
+            this.lbExit.TabIndex = 1;
+            this.lbExit.Text = "X";
+            // 
+            // lbTitle
+            // 
+            this.lbTitle.AutoSize = true;
+            this.lbTitle.Font = new System.Drawing.Font("Tahoma", 18F);
+            this.lbTitle.Location = new System.Drawing.Point(296, 20);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.Size = new System.Drawing.Size(543, 36);
+            this.lbTitle.TabIndex = 0;
+            this.lbTitle.Text = "🟢 LANLink - Local Network Messenger ";
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnSend);
-            this.panel2.Controls.Add(this.btnAttachFile);
             this.panel2.Controls.Add(this.txtInput);
-            this.panel2.Controls.Add(this.btnRefresh);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 532);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1097, 100);
             this.panel2.TabIndex = 1;
             // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(993, 29);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(58, 32);
+            this.btnSend.TabIndex = 3;
+            this.btnSend.Text = "✉️";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // txtInput
+            // 
+            this.txtInput.Location = new System.Drawing.Point(286, 19);
+            this.txtInput.Multiline = true;
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(640, 42);
+            this.txtInput.TabIndex = 1;
+            // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.lstPeers);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 81);
@@ -93,14 +129,14 @@
             this.panel4.Size = new System.Drawing.Size(286, 116);
             this.panel4.TabIndex = 0;
             // 
-            // panel5
+            // txtPort
             // 
-            this.panel5.Controls.Add(this.lblSelectedPeer);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(286, 81);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(811, 70);
-            this.panel5.TabIndex = 3;
+            this.txtPort.AutoSize = true;
+            this.txtPort.Location = new System.Drawing.Point(52, 70);
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(75, 17);
+            this.txtPort.TabIndex = 1;
+            this.txtPort.Text = "Port: 8080";
             // 
             // lblMyIP
             // 
@@ -111,24 +147,23 @@
             this.lblMyIP.TabIndex = 0;
             this.lblMyIP.Text = "My Ip: 192...";
             // 
-            // lstPeers
+            // panel5
             // 
-            this.lstPeers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstPeers.FormattingEnabled = true;
-            this.lstPeers.ItemHeight = 16;
-            this.lstPeers.Location = new System.Drawing.Point(0, 116);
-            this.lstPeers.Name = "lstPeers";
-            this.lstPeers.Size = new System.Drawing.Size(286, 335);
-            this.lstPeers.TabIndex = 1;
+            this.panel5.Controls.Add(this.lblSelectedPeer);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(286, 81);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(811, 70);
+            this.panel5.TabIndex = 3;
             // 
-            // btnRefresh
+            // lblSelectedPeer
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(97, 38);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 0;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.lblSelectedPeer.AutoSize = true;
+            this.lblSelectedPeer.Location = new System.Drawing.Point(84, 25);
+            this.lblSelectedPeer.Name = "lblSelectedPeer";
+            this.lblSelectedPeer.Size = new System.Drawing.Size(83, 17);
+            this.lblSelectedPeer.TabIndex = 0;
+            this.lblSelectedPeer.Text = "Chat with:...";
             // 
             // lstChat
             // 
@@ -140,71 +175,11 @@
             this.lstChat.Size = new System.Drawing.Size(811, 381);
             this.lstChat.TabIndex = 4;
             // 
-            // txtInput
+            // imageList1
             // 
-            this.txtInput.Location = new System.Drawing.Point(286, 19);
-            this.txtInput.Multiline = true;
-            this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(640, 42);
-            this.txtInput.TabIndex = 1;
-            // 
-            // btnAttachFile
-            // 
-            this.btnAttachFile.Location = new System.Drawing.Point(943, 29);
-            this.btnAttachFile.Name = "btnAttachFile";
-            this.btnAttachFile.Size = new System.Drawing.Size(58, 32);
-            this.btnAttachFile.TabIndex = 2;
-            this.btnAttachFile.Text = "📎";
-            this.btnAttachFile.UseVisualStyleBackColor = true;
-            // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(1027, 29);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(58, 32);
-            this.btnSend.TabIndex = 3;
-            this.btnSend.Text = "✉️";
-            this.btnSend.UseVisualStyleBackColor = true;
-            // 
-            // lbTitle
-            // 
-            this.lbTitle.AutoSize = true;
-            this.lbTitle.Font = new System.Drawing.Font("Tahoma", 18F);
-            this.lbTitle.Location = new System.Drawing.Point(193, 18);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(719, 36);
-            this.lbTitle.TabIndex = 0;
-            this.lbTitle.Text = "🟢 LANLink - Local Network Messenger & File Transfer";
-            // 
-            // lbExit
-            // 
-            this.lbExit.AutoSize = true;
-            this.lbExit.BackColor = System.Drawing.Color.Red;
-            this.lbExit.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.lbExit.ForeColor = System.Drawing.Color.White;
-            this.lbExit.Location = new System.Drawing.Point(1043, 30);
-            this.lbExit.Name = "lbExit";
-            this.lbExit.Size = new System.Drawing.Size(22, 24);
-            this.lbExit.TabIndex = 1;
-            this.lbExit.Text = "X";
-            // 
-            // txtPort
-            // 
-            this.txtPort.AutoSize = true;
-            this.txtPort.Location = new System.Drawing.Point(52, 70);
-            this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(75, 17);
-            this.txtPort.TabIndex = 1;
-            this.txtPort.Text = "Port: 8080";
-            // 
-            // lblSelectedPeer
-            // 
-            this.lblSelectedPeer.AutoSize = true;
-            this.lblSelectedPeer.Location = new System.Drawing.Point(84, 25);
-            this.lblSelectedPeer.Name = "lblSelectedPeer";
-            this.lblSelectedPeer.Size = new System.Drawing.Size(83, 17);
-            this.lblSelectedPeer.TabIndex = 0;
-            this.lblSelectedPeer.Text = "Chat with:...";
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // Form1
             // 
@@ -240,17 +215,15 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.ListBox lstPeers;
         private System.Windows.Forms.Label lblMyIP;
         private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.Button btnAttachFile;
         private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.ListBox lstChat;
         private System.Windows.Forms.Label lbExit;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Label txtPort;
         private System.Windows.Forms.Label lblSelectedPeer;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
