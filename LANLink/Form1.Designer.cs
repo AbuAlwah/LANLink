@@ -339,6 +339,7 @@
             this.buttonConnect.Size = new System.Drawing.Size(1018, 45);
             this.buttonConnect.TabIndex = 2;
             this.buttonConnect.Text = "🔗 Connect / Start Session";
+            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
             // 
             // panel4
             // 
