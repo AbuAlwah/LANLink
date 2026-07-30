@@ -184,5 +184,40 @@ namespace LANLink
                 }
             };
 
+            // Add message text to the colored bubble
+            textBubble.Controls.Add(lblMessage);
+
+            // Assemble controls inside the main card
+            mainCard.Controls.Add(textBubble);
+            mainCard.Controls.Add(lblHeader);
+
+            // Calculate exact width without fixed minimum size (shrinks for small texts)
+            Size textSize = TextRenderer.MeasureText(messageText, lblMessage.Font);
+            int bubbleWidth = Math.Min(textSize.Width + 28, (int)(containerWidth * 0.65));
+
+            // Ensure enough width for header if message text is shorter than header
+            Size headerSize = TextRenderer.MeasureText(lblHeader.Text, lblHeader.Font);
+            int finalWidth = Math.Max(bubbleWidth, headerSize.Width + 10);
+
+            mainCard.Size = new Size(finalWidth, lblHeader.Height + textBubble.PreferredSize.Height + 2);
+
+            // Set placement & alignment (Far Right for 'Me' / Far Left for 'Friend')
+            if (isMe)
+            {
+                mainCard.Location = new Point(containerWidth - mainCard.Width - 10, 0);
+            }
+            else
+            {
+                mainCard.Location = new Point(5, 0);
+            }
+
+            rowPanel.Height = mainCard.Height + 2;
+            rowPanel.Controls.Add(mainCard);
+
+            // Add row to FlowLayoutPanel and scroll to bottom
+            flowLayoutMessage.Controls.Add(rowPanel);
+            flowLayoutMessage.ScrollControlIntoView(rowPanel);
         }
+
+    }
     }
