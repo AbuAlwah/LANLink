@@ -12,11 +12,18 @@ A clean, modern, and light-weight Peer-to-Peer (P2P) desktop messaging applicati
 
 ---
 
-## 📸 Screenshots Showcase
+### 🚀 Connection Setup
+![Connection Setup](mainPage.png)
 
-| 🚀 Connection Setup | 💬 Client 1 View (Sender) | 💬 Client 2 View (Receiver) |
-| :-----------------: | :-----------------------: | :-------------------------: |
-| <img src="https://github.com/AbuAlwah/LANLink/blob/main/mainPage.png?raw=true"/> | <img src="https://github.com/AbuAlwah/LANLink/blob/main/mePage.png?raw=true"/> | <img src="https://github.com/AbuAlwah/LANLink/blob/main/friendPage.png?raw=true"/> |
+---
+
+### 💬 Client 1 View (Sender)
+![Client 1 View](mePage.png)
+
+---
+
+### 💬 Client 2 View (Receiver)
+![Client 2 View](friendPage.png)
 
 ---
 
