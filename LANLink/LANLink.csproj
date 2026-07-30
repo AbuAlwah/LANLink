@@ -78,6 +78,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -92,6 +93,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noun-link-4166490-064771.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\laptop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hotspot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\laptop %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\[CITYPNG.COM]Blue Round Close X Icon HD PNG - 700x700.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

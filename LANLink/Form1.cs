@@ -219,6 +219,11 @@ namespace LANLink
             flowLayoutMessage.ScrollControlIntoView(rowPanel);
         }
 
+        private void iconExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         // Helper function to draw rounded corners
         private GraphicsPath GetRoundedPath(Rectangle rect, int radius)
         {
