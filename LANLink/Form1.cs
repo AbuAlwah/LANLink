@@ -123,5 +123,66 @@ namespace LANLink
                 // Ignore errors if the Socket is closed
             }
         }
+
+        private void AddBubbleMessage(string messageText, bool isMe)
+        {
+            // 1. Calculate available width inside flowLayoutMessage
+            int containerWidth = flowLayoutMessage.ClientSize.Width - 25;
+            if (containerWidth < 100) containerWidth = 300;
+
+            // 2. Create outer container for the row
+            Panel rowPanel = new Panel();
+            rowPanel.Width = containerWidth;
+            rowPanel.BackColor = Color.Transparent;
+            rowPanel.Margin = new Padding(0, 3, 0, 3);
+
+            // 3. Create main card panel
+            Panel mainCard = new Panel();
+            mainCard.BackColor = Color.Transparent;
+
+            // 4. Header label (Sender Name & Timestamp)
+            Label lblHeader = new Label();
+            lblHeader.Text = $"{(isMe ? "Me" : "Friend")}  {DateTime.Now.ToString("hh:mm tt")}";
+            lblHeader.Font = new Font("Segoe UI", 7.5F, FontStyle.Bold);
+            lblHeader.ForeColor = isMe ? Color.FromArgb(200, 230, 255) : Color.FromArgb(46, 204, 113);
+            lblHeader.AutoSize = true;
+            lblHeader.Dock = DockStyle.Top;
+            lblHeader.TextAlign = ContentAlignment.MiddleLeft; 
+            lblHeader.Padding = new Padding(2, 0, 0, 2);
+
+            // 5. Message label
+            Label lblMessage = new Label();
+            lblMessage.Text = messageText;
+            lblMessage.Font = new Font("Segoe UI", 9.5F);
+            lblMessage.ForeColor = Color.White;
+            lblMessage.AutoSize = true;
+            lblMessage.MaximumSize = new Size((int)(containerWidth * 0.65), 0);
+            lblMessage.Dock = DockStyle.Fill;
+            lblMessage.BackColor = Color.Transparent;
+
+            // 6. Colored bubble container
+            Panel textBubble = new Panel();
+            Color bubbleColor = isMe ? Color.FromArgb(0, 122, 204) : Color.FromArgb(45, 48, 62);
+            textBubble.BackColor = Color.Transparent;
+            textBubble.Padding = new Padding(12, 6, 12, 6); 
+            textBubble.Dock = DockStyle.Top;
+            textBubble.AutoSize = true;
+
+            // Render rounded corners
+            textBubble.Paint += (s, pe) =>
+            {
+                Graphics g = pe.Graphics;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+
+                int radius = 12; 
+                Rectangle rect = new Rectangle(0, 0, textBubble.Width - 1, textBubble.Height - 1);
+
+                using (GraphicsPath path = GetRoundedPath(rect, radius))
+                using (SolidBrush brush = new SolidBrush(bubbleColor))
+                {
+                    g.FillPath(brush, path);
+                }
+            };
+
+        }
     }
-}
