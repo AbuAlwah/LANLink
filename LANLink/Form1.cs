@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace LANLink
 {
@@ -89,6 +90,38 @@ namespace LANLink
                     return ip.ToString();
             }
             return "127.0.0.1";
+        }
+
+        private void MessageCallBack(IAsyncResult aResult)
+        {
+            try
+            {
+               // 1. End receive operation to get the actual number of bytes received 
+                int size = sck.EndReceiveFrom(aResult, ref epRemote);
+
+                if (size > 0)
+                {
+                    byte[] receiveData = (byte[])aResult.AsyncState;
+
+                    // 2. Convert ONLY received bytes to string, not the entire 1500 buffer
+                    ASCIIEncoding aEncoding = new ASCIIEncoding();
+                    string receivedMessage = aEncoding.GetString(receiveData, 0, size);
+
+                    // 3. Add message to the UI thread
+                    this.Invoke(new MethodInvoker(delegate
+                    {
+                        AddBubbleMessage(receivedMessage, false);
+                    }));
+                }
+
+                // 4. Re-listen for the next incoming message
+                buffer = new byte[1500];
+                sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
+            }
+            catch (Exception ex)
+            {
+                // Ignore errors if the Socket is closed
+            }
         }
     }
 }
