@@ -44,9 +44,39 @@ namespace LANLink
             // Listening the specific port 
             buffer = new byte[1500];
             sck.BeginReceiveFrom(buffer, 0, buffer.Length, SocketFlags.None, ref epRemote, new AsyncCallback(MessageCallBack), buffer);
-{
+            {
 
             };
+        }
+
+        private void buttonSend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ensure that the text is not empty
+                if (!string.IsNullOrWhiteSpace(txtMessage.Text))
+                {
+                    // 1. Convert text to bytes
+                    ASCIIEncoding aEncoding = new ASCIIEncoding();
+                    byte[] sendingMessage = new byte[1500];
+                    sendingMessage = aEncoding.GetBytes(txtMessage.Text);
+
+                    // 2. Send data via Socket
+                    sck.Send(sendingMessage);
+
+                    // 3. Add a message bubble in FlowLayoutPanel
+                    AddBubbleMessage(txtMessage.Text, true);
+
+                    // 4. Unpack the textBox and refocus on it
+                    txtMessage.Text = "";
+                    txtMessage.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("First before sending, make sure to click on Connect!\n\nDetails: " + ex.Message,
+                                "Sending Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private string GetLocalIP()
@@ -59,16 +89,6 @@ namespace LANLink
                     return ip.ToString();
             }
             return "127.0.0.1";
-        }
-
-        private void MessageCallBack(IAsyncResult aResult)
-        {
-            byte[] receiveData = new byte[1500];
-            receiveData = (byte[])aResult.AsyncState;
-
-            // Converting byte[] to string
-            ASCIIEncoding aEncoding = new ASCIIEncoding();
-            string receivedMessage = aEncoding.GetString(receiveData);
         }
     }
 }
